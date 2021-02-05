@@ -1,14 +1,15 @@
-dist: xenial
+sudo: false
 language: python
+cache:
+  directories:
+    - $HOME/.cache/pip
 python:
   - "3.6"
-virtualenv:
-  system_site_packages: true
 branches:
   only:
   - /^\d+\.\d+\.\d+$/
 script:
-  - python setup.py sdist
+  - python setup.py sdist bdist_wheel
   - twine upload dist/*.tar.gz
 before_script:
   - pip install -U twine setuptools

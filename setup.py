@@ -9,6 +9,7 @@ setup(
     author='Alexey Shagaleev',
     author_email='alexey.shagaleev@yandex.ru',
     description='Macrobase drivers base',
+    python_requires=">=3.6, <=3.8",
     install_requires=[
         'structlog==19.2.0',
         'python-rapidjson==0.8.0',
