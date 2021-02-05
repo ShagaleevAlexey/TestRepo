@@ -2,14 +2,18 @@ sudo: false
 language: python
 cache:
   directories:
-    - $HOME/.cache/pip
+  - "$HOME/.cache/pip"
 python:
-  - "3.6"
+- '3.6'
 branches:
   only:
-  - /^\d+\.\d+\.\d+$/
-script:
-  - python setup.py sdist bdist_wheel
-  - twine upload dist/*.tar.gz
-before_script:
-  - pip install -U twine setuptools
+  - "/^\\d+\\.\\d+\\.\\d+$/"
+script: travis_retry tox -e $TOX_ENV
+deploy:
+  provider: pypi
+  user: ShagaleevAlexey
+  password:
+    secure: SGGUtZVehk28qNNRxLzjRp5VVKnzInPVRkKolWRU0H6QSgqd9qL1HT+rpRepKvEKN5rF/zY8qESSILdcR6wCkmnLcEsHSGGd1GzguHEvNdbkg4pxtKLS5V69wjLZNHuUzaYvozvF762rUPr0/MmApZo5WsI8npcJZvTy1IAyXicclcpPh5LzA7L7YjdF08h7V+G9uNRiV8DiQIUKg2SVL0Q56LlMwsGiK+aCvUdd0/NS7mpsI4kQEnNvRtDb5UEB3sjzxEK0Tb4HFyRP+7l5BVHz4xMo6oHVkdpwMK19fFIneXddq4lxcZFfTGmBq7IuPpei3Y7zeKV+YisyOgAFmD3/0brg8FU5t7Cpq0zrmKjbjnDAYH9kR5XgvovzsWhdM6m0tVKttaV+CD2Kg29RtGFqzw32OQFvnUoVsGp/wWr4Gui1BcMcBI5e9HZLcLWZfgMEriDZexJaBORXqZOchG4TYbYf0mY4To3f6/Qf2cLbpM19ag5egbZYvGcRTmo6nLnw4aCmfYVJaVWtfMnSd+6AA9VVXWToxPy0YNAXPG4zRDDyd3stgS+/1v0mjUeWxH30xrpolUJn29KYqKcgIq2dTyBG/HKcZpIQazmevWS3UAYz62aTwTjleD7j9BzqaNfk/tXju8zw8LkK1EtnEWAr7WOr8vZj8mWrXCVwQaU=
+  on:
+    tags: true
+  distributions: sdist bdist_wheel
