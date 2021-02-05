@@ -1,6 +1,5 @@
 dist: xenial
 language: python
-cache: pip
 branches:
   only:
   - /^\d+\.\d+\.\d+$/
