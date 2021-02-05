@@ -8,6 +8,7 @@ python:
 branches:
   only:
   - "/^\\d+\\.\\d+\\.\\d+$/"
+script: true
 deploy:
   provider: pypi
   user: ShagaleevAlexey
