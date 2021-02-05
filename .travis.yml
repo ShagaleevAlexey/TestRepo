@@ -8,7 +8,6 @@ python:
 branches:
   only:
   - "/^\\d+\\.\\d+\\.\\d+$/"
-script: travis_retry tox -e $TOX_ENV
 deploy:
   provider: pypi
   user: ShagaleevAlexey
